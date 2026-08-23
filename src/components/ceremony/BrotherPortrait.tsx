@@ -13,10 +13,8 @@ type Props = {
 /** Ornate golden frame holding the brother's portrait, tilak and rakhi glow. */
 export function BrotherPortrait({ photo, tilak, showTilak, glow, rakhiImage }: Props) {
   return (
-    <motion.div
-      className="relative mx-auto w-[min(78vw,20rem)]"
-      animate={glow ? { boxShadow: ["0 0 0 rgba(0,0,0,0)"] } : undefined}
-    >
+    <div className="relative mx-auto w-[min(78vw,20rem)]">
+
       <div
         className={`relative overflow-hidden rounded-[2rem] border-4 border-primary/70 bg-secondary p-1 shadow-royal ${
           glow ? "glow-diya" : ""
