@@ -39,6 +39,6 @@ export function BrotherPortrait({ photo, tilak, showTilak, glow, rakhiImage }: P
         ) : null}
       </div>
       <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-primary/30" />
-    </motion.div>
+    </div>
   );
 }
