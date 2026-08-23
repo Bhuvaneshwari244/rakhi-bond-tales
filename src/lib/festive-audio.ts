@@ -67,8 +67,8 @@ export function startMusic() {
     const step = () => {
       if (!ctx) return;
       const t = ctx.currentTime + 0.05;
-      pluck(t, RAGA[i % RAGA.length]);
-      if (i % 4 === 3) pluck(t + 0.9, RAGA[(i + 2) % RAGA.length], 0.04);
+      pluck(t, RAGA[i % RAGA.length]!);
+      if (i % 4 === 3) pluck(t + 0.9, RAGA[(i + 2) % RAGA.length]!, 0.04);
       i += 1;
     };
     step();
