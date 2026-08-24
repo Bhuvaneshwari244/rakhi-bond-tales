@@ -1,14 +1,25 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   count?: number;
   variant?: "petals" | "sparkles";
 };
 
-/** Ambient floating marigold petals / golden sparkles. Purely decorative. */
+type Bit = {
+  id: number;
+  left: number;
+  size: number;
+  delay: number;
+  duration: number;
+  opacity: number;
+};
+
+/** Ambient floating marigold petals / golden sparkles. Client-only (randomised). */
 export function FestiveParticles({ count = 18, variant = "petals" }: Props) {
-  const bits = useMemo(
-    () =>
+  const [bits, setBits] = useState<Bit[]>([]);
+
+  useEffect(() => {
+    setBits(
       Array.from({ length: count }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
@@ -17,19 +28,19 @@ export function FestiveParticles({ count = 18, variant = "petals" }: Props) {
         duration: 16 + Math.random() * 16,
         opacity: 0.25 + Math.random() * 0.5,
       })),
-    [count, variant],
-  );
+    );
+  }, [count, variant]);
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden">
       {bits.map((b) => (
         <span
           key={b.id}
-          className="animate-float-up absolute bottom-[-10vh] block rounded-full bg-gilded"
+          className="animate-float-up absolute bottom-[-10vh] block bg-gilded"
           style={{
             left: `${b.left}%`,
-            width: b.size,
-            height: variant === "petals" ? b.size * 0.7 : b.size,
+            width: `${b.size}px`,
+            height: `${variant === "petals" ? b.size * 0.7 : b.size}px`,
             borderRadius: variant === "petals" ? "60% 40% 55% 45%" : "9999px",
             opacity: b.opacity,
             animationDelay: `${b.delay}s`,
