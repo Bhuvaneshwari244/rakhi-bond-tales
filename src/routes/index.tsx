@@ -94,32 +94,23 @@ function Ceremony() {
       <div className="relative z-10">
         <AnimatePresence mode="wait">
           {step === 0 ? (
-            <motion.div key="welcome">
-              <Welcome name={name} onNameChange={setName} onBegin={next} />
-            </motion.div>
+            <Welcome name={name} onNameChange={setName} onBegin={next} />
           ) : null}
 
           {step === 1 ? (
-            <motion.div key="tilak">
-              <StepTilak photo={null} chosen={tilak} onChoose={setTilak} onDone={next} onSparkle={sparkle} />
-            </motion.div>
+            <StepTilak photo={null} chosen={tilak} onChoose={setTilak} onDone={next} onSparkle={sparkle} />
           ) : null}
 
           {step === 2 ? (
-            <motion.div key="aarti">
-              <StepAarti photo={null} tilak={tilak} onDone={next} onBell={bell} />
-            </motion.div>
+            <StepAarti photo={null} tilak={tilak} onDone={next} onBell={bell} />
           ) : null}
 
           {step === 3 ? (
-            <motion.div key="rakhi">
-              <StepRakhi chosen={rakhi} onChoose={setRakhi} onDone={next} onSparkle={sparkle} />
-            </motion.div>
+            <StepRakhi chosen={rakhi} onChoose={setRakhi} onDone={next} onSparkle={sparkle} />
           ) : null}
 
           {step === 4 ? (
-            <motion.div key="sweet">
-              <StepSweet
+            <StepSweet
                 photo={null}
                 tilak={tilak}
                 rakhiImage={rakhiImage}
@@ -128,18 +119,14 @@ function Ceremony() {
                 onDone={next}
                 onSparkle={sparkle}
               />
-            </motion.div>
           ) : null}
 
           {step === 5 ? (
-            <motion.div key="hug">
-              <StepHug name={name} onDone={next} onSparkle={sparkle} />
-            </motion.div>
+            <StepHug name={name} onDone={next} onSparkle={sparkle} />
           ) : null}
 
           {step === 6 ? (
-            <motion.div key="finale">
-              <Finale
+            <Finale
                 name={name}
                 tilak={tilak}
                 rakhi={rakhi}
@@ -151,7 +138,6 @@ function Ceremony() {
                   setStep(0);
                 }}
               />
-            </motion.div>
           ) : null}
         </AnimatePresence>
       </div>
