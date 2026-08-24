@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 import { Volume2, VolumeX } from "lucide-react";
 import { FestiveParticles } from "@/components/ceremony/FestiveParticles";
 import { Welcome } from "@/components/ceremony/Welcome";
@@ -94,23 +94,24 @@ function Ceremony() {
       <div className="relative z-10">
         <AnimatePresence mode="wait">
           {step === 0 ? (
-            <Welcome name={name} onNameChange={setName} onBegin={next} />
+            <Welcome key="welcome" name={name} onNameChange={setName} onBegin={next} />
           ) : null}
 
           {step === 1 ? (
-            <StepTilak photo={null} chosen={tilak} onChoose={setTilak} onDone={next} onSparkle={sparkle} />
+            <StepTilak key="tilak" photo={null} chosen={tilak} onChoose={setTilak} onDone={next} onSparkle={sparkle} />
           ) : null}
 
           {step === 2 ? (
-            <StepAarti photo={null} tilak={tilak} onDone={next} onBell={bell} />
+            <StepAarti key="aarti" photo={null} tilak={tilak} onDone={next} onBell={bell} />
           ) : null}
 
           {step === 3 ? (
-            <StepRakhi chosen={rakhi} onChoose={setRakhi} onDone={next} onSparkle={sparkle} />
+            <StepRakhi key="rakhi" chosen={rakhi} onChoose={setRakhi} onDone={next} onSparkle={sparkle} />
           ) : null}
 
           {step === 4 ? (
             <StepSweet
+                key="sweet"
                 photo={null}
                 tilak={tilak}
                 rakhiImage={rakhiImage}
@@ -122,11 +123,12 @@ function Ceremony() {
           ) : null}
 
           {step === 5 ? (
-            <StepHug name={name} onDone={next} onSparkle={sparkle} />
+            <StepHug key="hug" name={name} onDone={next} onSparkle={sparkle} />
           ) : null}
 
           {step === 6 ? (
             <Finale
+                key="finale"
                 name={name}
                 tilak={tilak}
                 rakhi={rakhi}
