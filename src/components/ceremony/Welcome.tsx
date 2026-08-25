@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Sister, SisterSays } from "./Sister";
 
@@ -13,6 +13,10 @@ export function Welcome({
 }) {
   const [draft, setDraft] = useState(name);
   const [pouting, setPouting] = useState(false);
+
+  useEffect(() => {
+    setDraft((current) => (current ? current : name));
+  }, [name]);
 
   const handleNo = () => {
     setPouting(true);

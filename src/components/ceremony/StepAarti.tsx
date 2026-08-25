@@ -83,12 +83,12 @@ export function StepAarti({
         <BrotherPortrait photo={photo} tilak={tilak} showTilak glow={complete} rakhiImage={null} />
 
         <motion.div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute size-[24rem] sm:size-[28rem]"
           animate={{ rotate: angle }}
           transition={auto ? { duration: 3, ease: "easeInOut" } : { type: "spring", stiffness: 260, damping: 26 }}
         >
           <motion.div
-            className="absolute left-1/2 top-0 -translate-x-1/2"
+            className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2"
             animate={{ rotate: -angle }}
             transition={auto ? { duration: 3, ease: "easeInOut" } : { type: "spring", stiffness: 260, damping: 26 }}
           >
