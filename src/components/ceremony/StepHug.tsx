@@ -45,12 +45,16 @@ export function StepHug({ name, onDone, onSparkle }: { name: string; onDone: () 
         ))}
 
         <motion.div
-          initial={{ scale: 0.8, y: 60, opacity: 0 }}
-          animate={{ scale: 1.05, y: 0, opacity: 1 }}
+          initial={{ scale: 0.85, y: 70, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
-          className="relative w-[min(60vw,17rem)]"
+          className="relative w-[min(72vw,22rem)]"
         >
-          <Sister className="w-full" mood="still" />
+          <img
+            src={hugIllustration.url}
+            alt="Brother and sister sharing a heartfelt hug"
+            className="w-full drop-shadow-2xl"
+          />
         </motion.div>
       </div>
 
