@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sister, SisterSays } from "./Sister";
+import { SisterSays } from "./Sister";
 import { Stage, ContinueButton } from "./Stage";
+import hugIllustration from "@/assets/hug-illustration.png.asset.json";
 
 export function StepHug({ name, onDone, onSparkle }: { name: string; onDone: () => void; onSparkle: () => void }) {
   const [blessed, setBlessed] = useState(false);
