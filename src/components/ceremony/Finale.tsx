@@ -55,22 +55,73 @@ export function Finale({
     setShareUrl(url.toString());
   }, [name]);
 
+  const fileName = `raksha-bandhan-${name.trim().toLowerCase().replace(/\s+/g, "-") || "memory"}.png`;
+
+  const renderCard = async () => {
+    if (!cardRef.current) return null;
+    const { toBlob } = await import("html-to-image");
+    return toBlob(cardRef.current, { pixelRatio: 2, cacheBust: true });
+  };
+
   const download = async () => {
-    if (!cardRef.current) return;
     setBusy(true);
     try {
-      const { default: html2canvas } = await import("html2canvas");
-      const canvas = await html2canvas(cardRef.current, { backgroundColor: null, scale: 2, useCORS: true });
+      const blob = await renderCard();
+      if (!blob) throw new Error("render failed");
+      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.download = `raksha-bandhan-${name.trim().toLowerCase() || "memory"}.png`;
-      link.href = canvas.toDataURL("image/png");
+      link.download = fileName;
+      link.href = url;
       link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+      toast.success("Memory card saved to your downloads 💖");
+    } catch {
+      toast.error("Couldn't save the card. Please try once more.");
     } finally {
       setBusy(false);
     }
   };
 
   const shareText = `Happy Raksha Bandhan${name.trim() ? `, ${name.trim()}` : ""}! No distance can ever weaken our bond. 💖 ${shareUrl}`;
+
+  const share = async () => {
+    setSharing(true);
+    try {
+      const blob = await renderCard();
+      const file = blob ? new File([blob], fileName, { type: "image/png" }) : null;
+      const nav = navigator as Navigator & {
+        canShare?: (data: ShareData & { files?: File[] }) => boolean;
+      };
+      if (file && nav.share && nav.canShare?.({ files: [file] })) {
+        await nav.share({ files: [file], text: shareText, title: "Happy Raksha Bandhan" });
+        return;
+      }
+      if (nav.share) {
+        await nav.share({ text: shareText, url: shareUrl, title: "Happy Raksha Bandhan" });
+        return;
+      }
+      window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank", "noopener");
+    } catch (err) {
+      if ((err as Error)?.name === "AbortError") return;
+      window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank", "noopener");
+    } finally {
+      setSharing(false);
+    }
+  };
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      toast.success("Ceremony link copied — send it to him 🧵");
+    } catch {
+      toast.error("Couldn't copy the link.");
+    }
+  };
+
+  const replay = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    onReplay();
+  };
 
   const chosenRakhi = rakhiOptions.find((r) => r.id === rakhi) ?? null;
 
