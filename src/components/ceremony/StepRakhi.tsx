@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { rakhiOptions } from "@/lib/ceremony-data";
 import { SisterSays } from "./Sister";
 import { Stage, ChoiceCard, ContinueButton } from "./Stage";
+import rakhiTieVideo from "@/assets/rakhi-tie.mp4.asset.json";
+
 
 export function StepRakhi({
   chosen,
