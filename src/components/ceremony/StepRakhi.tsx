@@ -64,6 +64,21 @@ export function StepRakhi({
               transition={{ duration: 1.4, ease: "easeInOut" }}
               className="relative w-64"
             />
+            {/* sister's virtual hand tying the knot */}
+            <motion.span
+              aria-hidden
+              className="pointer-events-none absolute text-5xl drop-shadow-lg select-none"
+              initial={{ x: 150, y: -110, rotate: 25, opacity: 0 }}
+              animate={
+                tied
+                  ? { x: 190, y: -130, rotate: 30, opacity: 0 }
+                  : { x: [140, 20, -30, 10], y: [-100, -18, -6, -18], rotate: [25, 8, -6, 8], opacity: 1 }
+              }
+              transition={{ duration: 1.6, ease: "easeInOut" }}
+            >
+              🤲
+            </motion.span>
+
             {tied ? (
               <>
                 <motion.div
