@@ -74,9 +74,7 @@ export function Finale({
 
   const shareText = `Happy Raksha Bandhan${name.trim() ? `, ${name.trim()}` : ""}! No distance can ever weaken our bond. 💖 ${shareUrl}`;
 
-  const chosenTilak = tilakStyles.find((t) => t.id === tilak)?.name ?? "Traditional tilak";
   const chosenRakhi = rakhiOptions.find((r) => r.id === rakhi) ?? null;
-  const chosenSweet = sweetOptions.find((s) => s.id === sweet)?.name ?? "Kaju Katli";
 
   return (
     <motion.section
