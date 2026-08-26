@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import { toast } from "sonner";
 import { rakhiOptions } from "@/lib/ceremony-data";
 
 function Fireworks() {
@@ -47,6 +48,7 @@ export function Finale({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false);
+  const [sharing, setSharing] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
 
   useEffect(() => {
