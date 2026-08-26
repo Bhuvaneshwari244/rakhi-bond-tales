@@ -105,6 +105,29 @@ export function StepRakhi({
         ) : null}
       </AnimatePresence>
 
+      {selected ? (
+        <motion.figure
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="panel-royal mx-auto mt-8 w-full max-w-lg overflow-hidden rounded-3xl p-2"
+        >
+          <video
+            src={rakhiTieVideo.url}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full rounded-2xl object-cover"
+          />
+          <figcaption className="px-2 pb-1 pt-3 text-center text-sm text-muted-foreground">
+            This is exactly how I'd tie it if I were beside you — thread over your wrist, one careful loop, one gentle knot.
+          </figcaption>
+        </motion.figure>
+      ) : null}
+
+
+
       {tied ? (
         <>
           <div className="mt-8 flex justify-center">
