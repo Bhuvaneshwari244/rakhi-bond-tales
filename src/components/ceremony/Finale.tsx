@@ -36,15 +36,13 @@ function Fireworks() {
 
 export function Finale({
   name,
-  tilak,
   rakhi,
-  sweet,
   onReplay,
 }: {
   name: string;
-  tilak: string | null;
+  tilak?: string | null;
   rakhi: string | null;
-  sweet: string | null;
+  sweet?: string | null;
   onReplay: () => void;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
