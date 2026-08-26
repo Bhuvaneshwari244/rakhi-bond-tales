@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { rakhiOptions, sweetOptions, tilakStyles } from "@/lib/ceremony-data";
+import { rakhiOptions } from "@/lib/ceremony-data";
 
 function Fireworks() {
   const bursts = [
