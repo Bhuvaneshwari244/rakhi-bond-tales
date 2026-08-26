@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { rakhiOptions, sweetOptions, tilakStyles } from "@/lib/ceremony-data";
+import { rakhiOptions } from "@/lib/ceremony-data";
 
 function Fireworks() {
   const bursts = [
@@ -36,15 +36,13 @@ function Fireworks() {
 
 export function Finale({
   name,
-  tilak,
   rakhi,
-  sweet,
   onReplay,
 }: {
   name: string;
-  tilak: string | null;
+  tilak?: string | null;
   rakhi: string | null;
-  sweet: string | null;
+  sweet?: string | null;
   onReplay: () => void;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -74,9 +72,7 @@ export function Finale({
 
   const shareText = `Happy Raksha Bandhan${name.trim() ? `, ${name.trim()}` : ""}! No distance can ever weaken our bond. 💖 ${shareUrl}`;
 
-  const chosenTilak = tilakStyles.find((t) => t.id === tilak)?.name ?? "Traditional tilak";
   const chosenRakhi = rakhiOptions.find((r) => r.id === rakhi) ?? null;
-  const chosenSweet = sweetOptions.find((s) => s.id === sweet)?.name ?? "Kaju Katli";
 
   return (
     <motion.section
@@ -116,11 +112,21 @@ export function Finale({
         >
           No distance can ever weaken our bond. Happy Raksha Bandhan! 💖
         </p>
-        <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed" style={{ color: "oklch(0.45 0.06 40)" }}>
-          Tilak: {chosenTilak} · Rakhi: {chosenRakhi?.name ?? "Traditional Zari"} · Sweet: {chosenSweet}
-        </p>
+        <div className="mx-auto mt-5 max-w-md space-y-3 text-sm leading-relaxed" style={{ color: "oklch(0.42 0.08 35)" }}>
+          <p>
+            This thread is small, but everything I feel for you is not. It carries every prayer I whisper for you,
+            every tear you wiped away, and every laugh we stole from an ordinary day.
+          </p>
+          <p>
+            Wherever life takes you, remember — you will always have one person who is quietly proud of you, always
+            on your side, always waiting to hear your voice.
+          </p>
+          <p style={{ color: "oklch(0.38 0.12 28)" }}>
+            "You are my first friend, my safest place, and my forever home."
+          </p>
+        </div>
         <p className="mt-6 font-display text-base" style={{ color: "oklch(0.4 0.14 25)" }}>
-          — With all my love, your sister
+          — With all my love, your sister Bhuvaneshwari
         </p>
       </div>
 
