@@ -44,6 +44,7 @@ export function StepAarti({
       eyebrow="Step Two"
       title="Circling the Light Around You"
       caption="Watch closely — the thali is moving in real time, three slow clockwise circles of light, exactly the way Amma taught me."
+      quote="May every dark road you walk be lit by the love we grew up sharing."
     >
       <div className="relative mx-auto flex h-[24rem] w-full max-w-xl select-none items-center justify-center sm:h-[28rem]">
         <div className="absolute size-[21rem] rounded-full border border-dashed border-primary/25 sm:size-[22rem]" />

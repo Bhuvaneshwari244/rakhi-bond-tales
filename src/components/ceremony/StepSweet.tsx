@@ -37,6 +37,7 @@ export function StepSweet({
       eyebrow="Step Four"
       title="One Bite, For All Our Sweetest Days"
       caption="Pick your favourite from the box — and no, you can't have all four. Well… maybe you can."
+      quote="May your life always be this sweet, bhaiya — and may I always be there to steal a bite."
     >
       <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="relative">

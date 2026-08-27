@@ -12,6 +12,7 @@ export function StepHug({ name, onDone, onSparkle }: { name: string; onDone: () 
       eyebrow="Step Five"
       title="A Hug That Crosses Every Mile"
       caption="Close your eyes for a second. Feel that? That's me holding on tight."
+      quote="No matter how many miles stand between us, you will never be out of my arms' reach in my heart."
     >
       <div className="relative mx-auto flex h-[26rem] w-full max-w-2xl items-end justify-center overflow-hidden rounded-[2.5rem] border border-border bg-secondary/40 sm:h-[30rem]">
         {/* arms wrapping */}

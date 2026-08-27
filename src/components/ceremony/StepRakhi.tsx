@@ -32,6 +32,7 @@ export function StepRakhi({
       eyebrow="Step Three"
       title="The Thread That Ties Us Forever"
       caption="Choose the rakhi that feels most like you — I'll tie it snug, and I promise not to knot it too tight this time."
+      quote="This thread is thin, but it has carried my whole heart to you for years."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {rakhiOptions.map((r) => (

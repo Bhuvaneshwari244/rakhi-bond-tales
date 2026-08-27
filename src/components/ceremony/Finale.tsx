@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "motion/react";
 import { toast } from "sonner";
 import { rakhiOptions } from "@/lib/ceremony-data";
@@ -48,14 +48,6 @@ export function Finale({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false);
-  const [sharing, setSharing] = useState(false);
-  const [shareUrl, setShareUrl] = useState("");
-
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    if (name.trim()) url.searchParams.set("name", name.trim());
-    setShareUrl(url.toString());
-  }, [name]);
 
   const fileName = `raksha-bandhan-${name.trim().toLowerCase().replace(/\s+/g, "-") || "memory"}.png`;
 
@@ -81,42 +73,6 @@ export function Finale({
       toast.error("Couldn't save the card. Please try once more.");
     } finally {
       setBusy(false);
-    }
-  };
-
-  const shareText = `Happy Raksha Bandhan${name.trim() ? `, ${name.trim()}` : ""}! No distance can ever weaken our bond. 💖 ${shareUrl}`;
-
-  const share = async () => {
-    setSharing(true);
-    try {
-      const blob = await renderCard();
-      const file = blob ? new File([blob], fileName, { type: "image/png" }) : null;
-      const nav = navigator as Navigator & {
-        canShare?: (data: ShareData & { files?: File[] }) => boolean;
-      };
-      if (file && nav.share && nav.canShare?.({ files: [file] })) {
-        await nav.share({ files: [file], text: shareText, title: "Happy Raksha Bandhan" });
-        return;
-      }
-      if (nav.share) {
-        await nav.share({ text: shareText, url: shareUrl, title: "Happy Raksha Bandhan" });
-        return;
-      }
-      window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank", "noopener");
-    } catch (err) {
-      if ((err as Error)?.name === "AbortError") return;
-      window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank", "noopener");
-    } finally {
-      setSharing(false);
-    }
-  };
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl);
-      toast.success("Ceremony link copied — send it to him 🧵");
-    } catch {
-      toast.error("Couldn't copy the link.");
     }
   };
 
@@ -193,25 +149,6 @@ export function Finale({
           className="rounded-full bg-gilded px-7 py-3 font-display text-base text-primary-foreground shadow-gold disabled:opacity-70"
         >
           {busy ? "Preparing…" : "Download Memory Card"}
-        </motion.button>
-        <motion.button
-          type="button"
-          onClick={share}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          disabled={sharing}
-          className="rounded-full border border-primary/60 px-7 py-3 font-display text-base text-ivory hover:border-primary disabled:opacity-70"
-        >
-          {sharing ? "Getting it ready…" : "Share on WhatsApp"}
-        </motion.button>
-        <motion.button
-          type="button"
-          onClick={copyLink}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          className="rounded-full border border-border px-7 py-3 font-display text-base text-ivory/85 hover:border-primary/60"
-        >
-          Copy ceremony link
         </motion.button>
         <motion.button
           type="button"
