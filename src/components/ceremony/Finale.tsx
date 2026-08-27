@@ -194,21 +194,34 @@ export function Finale({
         >
           {busy ? "Preparing…" : "Download Memory Card"}
         </motion.button>
-        <a
-          href={`https://wa.me/?text=${encodeURIComponent(shareText)}`}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full border border-primary/60 px-7 py-3 font-display text-base text-ivory hover:border-primary"
-        >
-          Share on WhatsApp
-        </a>
-        <button
+        <motion.button
           type="button"
-          onClick={onReplay}
+          onClick={share}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          disabled={sharing}
+          className="rounded-full border border-primary/60 px-7 py-3 font-display text-base text-ivory hover:border-primary disabled:opacity-70"
+        >
+          {sharing ? "Getting it ready…" : "Share on WhatsApp"}
+        </motion.button>
+        <motion.button
+          type="button"
+          onClick={copyLink}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="rounded-full border border-border px-7 py-3 font-display text-base text-ivory/85 hover:border-primary/60"
+        >
+          Copy ceremony link
+        </motion.button>
+        <motion.button
+          type="button"
+          onClick={replay}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
           className="rounded-full border border-border px-7 py-3 font-display text-base text-ivory/85 hover:border-primary/60"
         >
           Celebrate again
-        </button>
+        </motion.button>
       </div>
     </motion.section>
   );
