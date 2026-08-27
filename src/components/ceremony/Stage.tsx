@@ -5,11 +5,13 @@ export function Stage({
   eyebrow,
   title,
   caption,
+  quote,
   children,
 }: {
   eyebrow: string;
   title: string;
   caption: string;
+  quote?: string;
   children: ReactNode;
 }) {
   return (
@@ -25,6 +27,16 @@ export function Stage({
       <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
         {caption}
       </p>
+      {quote ? (
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mx-auto mt-5 max-w-xl text-center font-display text-lg italic leading-relaxed text-primary/90 sm:text-xl"
+        >
+          “{quote}”
+        </motion.p>
+      ) : null}
       <div className="mt-9">{children}</div>
     </motion.section>
   );

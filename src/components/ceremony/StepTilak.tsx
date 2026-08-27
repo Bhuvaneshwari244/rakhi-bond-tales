@@ -38,6 +38,7 @@ export function StepTilak({
       eyebrow="Step One"
       title="A Mark of Blessing on Your Forehead"
       caption="Pick the tilak you'd like me to place — I still remember which one you always sat still for."
+      quote="A brother is a blessing wrapped in mischief — and mine is my favorite prayer answered."
     >
       <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className="relative">
