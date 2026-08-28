@@ -41,7 +41,7 @@ function Ceremony() {
   const [tilak, setTilak] = useState<string | null>(null);
   const [rakhi, setRakhi] = useState<string | null>(null);
   const [sweet, setSweet] = useState<string | null>(null);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
 
   useEffect(() => {
     const param = new URLSearchParams(window.location.search).get("name");
