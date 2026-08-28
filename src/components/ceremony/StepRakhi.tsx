@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { rakhiOptions } from "@/lib/ceremony-data";
 import { SisterSays } from "./Sister";
 import { Stage, ChoiceCard, ContinueButton } from "./Stage";
-import rakhiTieVideo from "@/assets/rakhi-tie.mp4.asset.json";
+// Bundled in public/ so it works on any static host (Vercel, etc.), not only Lovable CDN.
+const rakhiTieVideoUrl = "/media/rakhi-tie.mp4";
 
 
 export function StepRakhi({
@@ -114,7 +115,7 @@ export function StepRakhi({
           className="panel-royal mx-auto mt-8 w-full max-w-lg overflow-hidden rounded-3xl p-2"
         >
           <video
-            src={rakhiTieVideo.url}
+            src={rakhiTieVideoUrl}
             autoPlay
             loop
             muted

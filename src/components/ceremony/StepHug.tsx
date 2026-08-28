@@ -2,7 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { SisterSays } from "./Sister";
 import { Stage, ContinueButton } from "./Stage";
-import hugIllustration from "@/assets/hug-illustration.png.asset.json";
+// Bundled in public/ so it works on any static host (Vercel, etc.), not only Lovable CDN.
+const hugIllustrationUrl = "/media/hug-illustration.png";
 
 export function StepHug({ name, onDone, onSparkle }: { name: string; onDone: () => void; onSparkle: () => void }) {
   const [blessed, setBlessed] = useState(false);
@@ -52,7 +53,7 @@ export function StepHug({ name, onDone, onSparkle }: { name: string; onDone: () 
           className="relative w-[min(72vw,22rem)]"
         >
           <img
-            src={hugIllustration.url}
+            src={hugIllustrationUrl}
             alt="Brother and sister sharing a heartfelt hug"
             className="w-full drop-shadow-2xl"
           />
