@@ -53,7 +53,7 @@ export function StepHug({ name, onDone, onSparkle }: { name: string; onDone: () 
           className="relative w-[min(72vw,22rem)]"
         >
           <img
-            src={hugIllustration.url}
+            src={hugIllustrationUrl}
             alt="Brother and sister sharing a heartfelt hug"
             className="w-full drop-shadow-2xl"
           />

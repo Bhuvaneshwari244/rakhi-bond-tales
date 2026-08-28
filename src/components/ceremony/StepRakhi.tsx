@@ -115,7 +115,7 @@ export function StepRakhi({
           className="panel-royal mx-auto mt-8 w-full max-w-lg overflow-hidden rounded-3xl p-2"
         >
           <video
-            src={rakhiTieVideo.url}
+            src={rakhiTieVideoUrl}
             autoPlay
             loop
             muted
